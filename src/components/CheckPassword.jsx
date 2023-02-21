@@ -1,15 +1,10 @@
 const checkPassword = (value, object) => {
-  const spaces = new RegExp("\\s", "g");
-  const lowerCase = new RegExp("[a-z]", "g");
-  const upperCase = new RegExp("[A-Z]", "g");
-  const number = new RegExp("\\d", "g");
-  const symbol = new RegExp("\\W", "g");
   if (
-    checkRegEx(value, spaces, object.spaces) &&
-    checkRegEx(value, lowerCase, object.lowerCase) &&
-    checkRegEx(value, upperCase, object.upperCase) &&
-    checkRegEx(value, number, object.number) &&
-    checkSymbols(value, symbol, object.symbol)
+    checkRegEx(value, /\s/g, object.spaces) &&
+    checkRegEx(value, /[a-z]/g, object.lowerCase) &&
+    checkRegEx(value, /[A-Z]/g, object.upperCase) &&
+    checkRegEx(value, /\d/g, object.number) &&
+    checkSymbols(value, /\W/g, object.symbol)
   ) {
     return true;
   } else {
