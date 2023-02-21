@@ -3,6 +3,9 @@ import Form from "./components/Form";
 import CodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { useState } from "react";
+import ObjecsTemplate from "./components/templates/ObjectsTemplate";
+import CheckPasswordTemplate from "./components/templates/CheckPasswordTemplates";
+import CheckUserTemplate from "./components/templates/CheckUserTemplate";
 function App() {
   const [object, setObject] = useState({
     spaces: -1,
@@ -40,6 +43,8 @@ function App() {
       <div className="options">
         <div>
           <h2>Password</h2>
+          <p>-1 for any, 0 or positive int for minimun times has to appear.</p>
+          <p> Needs to be checked to apply</p>
           <div>
             <input
               type="checkbox"
@@ -138,6 +143,8 @@ function App() {
         </div>
         <div>
           <h2>User</h2>
+          <p>-1 for any, 0 for not allowed. 1 for needed</p>
+          <p> Needs to be checked to apply</p>
           <div>
             <input
               type="checkbox"
@@ -292,12 +299,27 @@ function App() {
         </div>
       </div>
       <div className="example">
+        <h1>Try yourself</h1>
+        <p>Result will appear on console as true/false</p>
+        <p>In case of forbidden word match also appear the word</p>
         <Form object={object} objectUser={objectUser} />
+        <div className="divCodeMirror">
         <CodeMirror
-          value="console.log('hello world!');"
+          value={ObjecsTemplate(object,objectUser)}
           height="200px"
           extensions={[javascript({ jsx: true })]}
         />
+        <CodeMirror
+          value={CheckPasswordTemplate()}
+          height="300px"
+          extensions={[javascript({ jsx: true })]}
+        />
+        <CodeMirror
+          value={CheckUserTemplate()}
+          height="300px"
+          extensions={[javascript({ jsx: true })]}
+        />
+        </div>
       </div>
     </div>
   );
