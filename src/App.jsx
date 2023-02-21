@@ -278,7 +278,14 @@ function App() {
             <div>
               ;
               {forbiddenWords.map((word) => (
-                <h4 key={word}>{word}</h4>
+                <div key={word}>
+                <h4 >{word}</h4>
+                <button onClick={()=>{
+                  const list = forbiddenWords.filter((forbidden)=>forbidden!==word)
+                  setForbidden([...list])
+                  setObjectUser({ ...objectUser, forbidden: [...list] })
+                }}>X</button>
+                </div>
               ))}
             </div>
           </div>
