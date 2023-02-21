@@ -35,7 +35,7 @@ function App() {
     if (ev.currentTarget.previousSibling.previousSibling.checked) {
       return parseInt(ev.currentTarget.value);
     } else {
-      return false;
+      return -1;
     }
   };
   return (
@@ -43,7 +43,7 @@ function App() {
       <div className="options">
         <div>
           <h2>Password</h2>
-          <p>-1 for any, 0 or positive int for minimun times has to appear.</p>
+          <p>-1 for any, 0 for never, int for minimun times has to appear.</p>
           <p> Needs to be checked to apply</p>
           <div>
             <input
@@ -54,15 +54,15 @@ function App() {
             />
             <h3>Spaces</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={10}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
-                  setObject({ ...object, spaces: handleChangeInput(ev) });
-                }
+                setObject({ ...object, spaces: handleChangeInput(ev) });
               }}
             />
+            <h4>{object.spaces}</h4>
           </div>
           <div>
             <input
@@ -73,15 +73,17 @@ function App() {
             />
             <h3>LowerCase</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={10}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObject({ ...object, lowerCase: handleChangeInput(ev) });
-                }
+                
               }}
             />
+            <h4>{object.lowerCase}</h4>
           </div>
           <div>
             <input
@@ -92,15 +94,17 @@ function App() {
             />
             <h3>UpperCase</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={10}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObject({ ...object, upperCase: handleChangeInput(ev) });
-                }
+                
               }}
             />
+            <h4>{object.upperCase}</h4>
           </div>
           <div>
             <input
@@ -111,15 +115,17 @@ function App() {
             />
             <h3>Numbers</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={10}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObject({ ...object, number: handleChangeInput(ev) });
-                }
+                
               }}
             />
+            <h4>{object.number}</h4>
           </div>
           <div>
             <input
@@ -130,15 +136,17 @@ function App() {
             />
             <h3>Symbols</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={10}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObject({ ...object, symbol: handleChangeInput(ev) });
-                }
+                
               }}
             />
+            <h4>{object.symbol}</h4>
           </div>
         </div>
         <div>
@@ -154,18 +162,20 @@ function App() {
             />
             <h3>Spaces</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={1}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObjectUser({
                     ...objectUser,
                     spaces: handleChangeInput(ev),
                   });
-                }
+                
               }}
             />
+            <h4>{objectUser.spaces}</h4>
           </div>
           <div>
             <input
@@ -179,18 +189,20 @@ function App() {
             />
             <h3>LowerCase</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={1}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObjectUser({
                     ...objectUser,
                     lowerCase: handleChangeInput(ev),
                   });
-                }
+                
               }}
             />
+            <h4>{objectUser.lowerCase}</h4>
           </div>
           <div>
             <input
@@ -204,18 +216,20 @@ function App() {
             />
             <h3>UpperCase</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={1}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObjectUser({
                     ...objectUser,
                     upperCase: handleChangeInput(ev),
                   });
-                }
+                
               }}
             />
+            <h4>{objectUser.upperCase}</h4>
           </div>
           <div>
             <input
@@ -226,18 +240,20 @@ function App() {
             />
             <h3>Numbers</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={1}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObjectUser({
                     ...objectUser,
                     number: handleChangeInput(ev),
                   });
-                }
+                
               }}
             />
+            <h4>{objectUser.number}</h4>
           </div>
           <div>
             <input
@@ -248,18 +264,20 @@ function App() {
             />
             <h3>Symbols</h3>
             <input
-              type="number"
+              type="range"
               defaultValue={-1}
               min={-1}
+              max={1}
               onChange={(ev) => {
-                if (handleChangeInput(ev) != false) {
+                
                   setObjectUser({
                     ...objectUser,
                     symbol: handleChangeInput(ev),
                   });
-                }
+                
               }}
             />
+            <h4>{objectUser.symbol}</h4>
           </div>
           <div>
             <h3>Forbbiden words</h3>
@@ -286,12 +304,18 @@ function App() {
               ;
               {forbiddenWords.map((word) => (
                 <div key={word}>
-                <h4 >{word}</h4>
-                <button onClick={()=>{
-                  const list = forbiddenWords.filter((forbidden)=>forbidden!==word)
-                  setForbidden([...list])
-                  setObjectUser({ ...objectUser, forbidden: [...list] })
-                }}>X</button>
+                  <h4>{word}</h4>
+                  <button
+                    onClick={() => {
+                      const list = forbiddenWords.filter(
+                        (forbidden) => forbidden !== word
+                      );
+                      setForbidden([...list]);
+                      setObjectUser({ ...objectUser, forbidden: [...list] });
+                    }}
+                  >
+                    X
+                  </button>
                 </div>
               ))}
             </div>
@@ -304,21 +328,21 @@ function App() {
         <p>In case of forbidden word match also appear the word</p>
         <Form object={object} objectUser={objectUser} />
         <div className="divCodeMirror">
-        <CodeMirror
-          value={ObjecsTemplate(object,objectUser)}
-          height="200px"
-          extensions={[javascript({ jsx: true })]}
-        />
-        <CodeMirror
-          value={CheckPasswordTemplate()}
-          height="300px"
-          extensions={[javascript({ jsx: true })]}
-        />
-        <CodeMirror
-          value={CheckUserTemplate()}
-          height="300px"
-          extensions={[javascript({ jsx: true })]}
-        />
+          <CodeMirror
+            value={ObjecsTemplate(object, objectUser)}
+            height="200px"
+            extensions={[javascript({ jsx: true })]}
+          />
+          <CodeMirror
+            value={CheckPasswordTemplate()}
+            height="300px"
+            extensions={[javascript({ jsx: true })]}
+          />
+          <CodeMirror
+            value={CheckUserTemplate()}
+            height="300px"
+            extensions={[javascript({ jsx: true })]}
+          />
         </div>
       </div>
     </div>
