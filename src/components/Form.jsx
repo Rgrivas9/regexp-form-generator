@@ -9,10 +9,10 @@ const Form = ({ object, objectUser }) => {
     const resultPassword = checkPassword(password.current.value, object);
     const resultUser = checkUser(user.current.value, objectUser);
     if (resultPassword == false) {
-      alert("Password must contain ...");
+      alert("Invalid Password");
     }
     if (resultUser[0] == false && resultUser.length == 1) {
-      alert("user must contain ...");
+      alert("Invalid User");
     }
     if (resultUser[0] == false && resultUser.length == 2) {
       alert(`The word ${resultUser[1]} is not allowed`);

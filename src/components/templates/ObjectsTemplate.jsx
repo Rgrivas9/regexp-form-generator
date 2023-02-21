@@ -50,16 +50,16 @@ const ObjecsTemplate = (object, objectUser) => {
     const resultPassword = checkPassword(inputPassword.value, password);
      const resultUser = checkUser(inputUser.value, user);
     if (resultPassword == false) {
-      alert("password");
+      alert("[your message here] \n e.g. Invalid Password");
   }
     if (resultUser[0] == false && resultUser.length==1) {
-      alert("user");
+      alert("[your message here] \n e.g. Invalid User");
   }
     if (resultUser[0] == false && resultUser.length==2) {
-      alert(\`The word \${resultUser[1]} is not allowed\`);
+      alert(\`[your message here] \\n e.g. The word \${resultUser[1]} is not allowed\`);
   }
      if (resultUser[0] && resultPassword) {
-      alert("Submit succeded");
+      alert("[your message here] \\n e.g. Submit succeded");
   }
 });
 
