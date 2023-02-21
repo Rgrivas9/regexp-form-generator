@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import checkPassword from "./CheckPassword";
 import checkUser from "./CheckUser";
-import './form.css'
+import './Form.css'
 
 const Form = ({ object, objectUser }) => {
   const handleSubmit = (ev) => {
