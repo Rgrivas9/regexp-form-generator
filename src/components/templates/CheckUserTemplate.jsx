@@ -1,21 +1,21 @@
 const CheckUserTemplate = () => {
   return `
-  //Function to check the user. Needs as arg the value of the input and te object 'user'
+  //Function to check the user. Needs as args the value of the input and the object 'user'
     const checkUser = (value, object) => {
       if (
-        checkRegEx(value, /\s/g, object.spaces) &&
-        checkRegEx(value, /[a-z]/g, object.lowerCase) &&
-        checkRegEx(value, /[A-Z]/g, object.upperCase) &&
-        checkRegEx(value, /\d/g, object.number) &&
-        checkSymbols(value, /\W/g, object.symbol)
+        checkRegExUser(value, /\\s/g, object.spaces) &&
+        checkRegExUser(value, /[a-z]/g, object.lowerCase) &&
+        checkRegExUser(value, /[A-Z]/g, object.upperCase) &&
+        checkRegExUser(value, /\\d/g, object.number) &&
+        checkSymbolsUser(value, /\\W/g, object.symbol)
       ){
           return checkForbidden(value, object.forbidden);
         } else {
-          return false;
+          return [false];
         }
       };
       
-      const checkRegEx = (value, regex, n) => {
+      const checkRegExUser = (value, regex, n) => {
         if (value.match(regex) != null && n == 0) {
           return false;
         }
@@ -25,7 +25,7 @@ const CheckUserTemplate = () => {
           return true;
         }
       };
-      const checkSymbols = (value, regex, n) => {
+      const checkSymbolsUser = (value, regex, n) => {
           const listWOSpaces = []
         if (value.match(regex) != null) {
           value.match(regex).forEach((ex) => {
@@ -47,7 +47,7 @@ const CheckUserTemplate = () => {
           const word = new RegExp(forbidden, "i");
           if (checkRegEx(value,word,0)==false){list.push(forbidden)}
         });
-        return list.length == 0 ? true : [false, list[0]];
+        return list.length == 0 ? [true] : [false, list[0]];
       };
       export default checkUser;
     `;

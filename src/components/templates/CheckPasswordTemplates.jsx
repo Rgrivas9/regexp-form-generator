@@ -3,11 +3,11 @@ const CheckPasswordTemplate = () => {
   //Function to check the password. Needs as args the value of the input and the object 'password'
     const checkPassword = (value, object) => {
       if (
-        checkRegEx(value, /\s/g, object.spaces) &&
+        checkRegEx(value, /\\s/g, object.spaces) &&
         checkRegEx(value, /[a-z]/g, object.lowerCase) &&
         checkRegEx(value, /[A-Z]/g, object.upperCase) &&
-        checkRegEx(value, /\d/g, object.number) &&
-        checkSymbols(value, /\W/g, object.symbol)
+        checkRegEx(value, /\\d/g, object.number) &&
+        checkSymbols(value, /\\W/g, object.symbol)
       ) {
           return true;
         } else {
