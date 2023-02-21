@@ -18,8 +18,9 @@ const Form = ({object,objectUser}) => {
         handleSubmit(ev);
       }}
     >
-      <input type="text" ref={user} placeholder={'User'}/>
+      
       <input type="text" ref={password} placeholder={'Password'}/>
+      <input type="text" ref={user} placeholder={'User'}/>
 
       <button type="submit">submit</button>
     </form>
