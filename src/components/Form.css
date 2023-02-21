@@ -1,0 +1,44 @@
+form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 2rem;
+  gap: 0.2rem;
+}
+.inputUser {
+  width: 300px;
+  padding: 0.4rem 0.5rem;
+}
+.inputPassword {
+  background-color: aquamarine;
+  position: relative;
+  display: flex;
+}
+.inputPassword input {
+  width: 300px;
+  padding: 0.3rem 0.5rem;
+}
+.inputPassword button {
+  position: absolute;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  height: 25px;
+  padding-right: 0.4rem;
+  padding-top: 0.1rem;
+}
+.inputPassword button:focus {
+  outline: none;
+}
+.inputPassword button img {
+  height: 25px;
+}
+.submitButton {
+  padding: 0.2rem 0.4rem;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,7 +1,7 @@
 const ObjecsTemplate = (object, objectUser) => {
   const objects = `
   //Objects
-  //Instruccionts bellow objects
+  //INSTRUCTIONS BELOW
     const password={
         spaces: ${object.spaces},
         lowerCase: ${object.lowerCase},

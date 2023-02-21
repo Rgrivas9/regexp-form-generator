@@ -1,10 +1,110 @@
-form {
-  display: flex;
-  flex-direction: column;
-}
-.options div div {
-  display: flex;
-}
 .App {
   display: flex;
+  justify-content: center;
+  gap: calc(100vw-);
+  font-family: Helvetica, sans-serif;
+  background-color: wheat;
+  color: #2b2c34;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 0.7rem;
+  border-right: 2px solid rgba(0, 0, 0, 0.534);
+  width: 275px;
+  background-color: #C8B592;
+}
+.options h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.options p {
+  font-size: 14px;
+  text-align: left;
+}
+.userDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.userDiv div {
+  display: flex;
+  gap: 0.2rem;
+}
+.userDiv div h3 {
+  font-size: 15px;
+}
+.forbiddenDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.forbidden2 div {
+  padding: 0.2rem 0.3rem;
+  background-color: rgba(0, 0, 0, 0.425);
+  border-radius: 2.5px;
+}
+.passwordDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.passwordDiv div {
+  display: flex;
+  gap: 0.2rem;
+}
+.passwordDiv div h3 {
+  font-size: 15px;
+}
+.example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 2rem;
+  width: 100%;
+}
+.divCodeMirror {
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.hidden {
+  display: none;
+}
+.buttonHide {
+  z-index: 5;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin-top: 0.2rem;
+  margin-left: 0.2rem;
+  width: 90px;
+}
+@media screen and (max-width: 1000px) {
+  .divCodeMirror {
+    width: 50vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  .divCodeMirror {
+    width: 450px;
+  }
+  .example {
+    width: 100%;
+  }
+  .options {
+    position: fixed;
+    left: 0;
+    height: 100%;
+    z-index: 3;
+  }
+}
+@media screen and (max-width: 470px) {
+  .divCodeMirror {
+    width: 350px;
+  }
 }

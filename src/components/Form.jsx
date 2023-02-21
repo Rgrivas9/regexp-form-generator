@@ -1,28 +1,59 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import checkPassword from "./CheckPassword";
 import checkUser from "./CheckUser";
+import './form.css'
 
-const Form = ({object,objectUser}) => {
+const Form = ({ object, objectUser }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    const result = checkPassword(password.current.value, object);
-    const resultUser = checkUser(user.current.value, objectUser)
-    console.log(result,'password')
-    console.log(resultUser,'user')
+    const resultPassword = checkPassword(password.current.value, object);
+    const resultUser = checkUser(user.current.value, objectUser);
+    if (resultPassword == false) {
+      alert("Password must contain ...");
+    }
+    if (resultUser[0] == false && resultUser.length == 1) {
+      alert("user must contain ...");
+    }
+    if (resultUser[0] == false && resultUser.length == 2) {
+      alert(`The word ${resultUser[1]} is not allowed`);
+    }
+    if (resultUser[0] && resultPassword) {
+      alert("Submit succeded");
+    }
   };
   const password = useRef(null);
-  const user = useRef(null)
+  const user = useRef(null);
+  const [see, setSee] = useState(false);
   return (
     <form
       onSubmit={(ev) => {
         handleSubmit(ev);
       }}
     >
-      
-      <input type="text" ref={password} placeholder={'Password'}/>
-      <input type="text" ref={user} placeholder={'User'}/>
-
-      <button type="submit">submit</button>
+      <input
+        type="text"
+        ref={user}
+        placeholder={"User"}
+        className="inputUser"
+      />
+      <div className="inputPassword">
+        <input
+          type={see ? "text" : "password"}
+          ref={password}
+          placeholder={"Password"}
+        />
+        <button
+          onClick={(ev) => {
+            ev.preventDefault();
+            setSee(!see);
+          }}
+        >
+          <img src={see ? "../notsee.png" : "../see.png"} alt="see button" />
+        </button>
+      </div>
+      <button type="submit" className="submitButton">
+        submit
+      </button>
     </form>
   );
 };

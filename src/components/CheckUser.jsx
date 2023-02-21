@@ -8,7 +8,7 @@ const checkUser = (value, object) => {
   ) {
     return checkForbidden(value, object.forbidden);
   } else {
-    return false;
+    return [false];
   }
 };
 
@@ -44,6 +44,6 @@ const checkForbidden = (value, forbbidenList) => {
     const word = new RegExp(forbidden, "i");
     if (checkRegEx(value,word,0)==false){list.push(forbidden)}
   });
-  return list.length == 0 ? true : [false, list[0]];
+  return list.length == 0 ? [true] : [false, list[0]];
 };
 export default checkUser;
