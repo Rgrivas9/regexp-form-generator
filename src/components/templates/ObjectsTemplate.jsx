@@ -14,7 +14,7 @@ const ObjecsTemplate = (object, objectUser) => {
         upperCase: ${objectUser.upperCase},
         number: ${objectUser.number},
         symbol: ${objectUser.symbol},
-        forbidden: ${objectUser.forbidden},
+        forbidden: ${[...objectUser.forbidden]},
       }`;
   return objects;
 };

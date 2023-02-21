@@ -1,6 +1,6 @@
 const CheckPasswordTemplate = () => {
   return `
-  //Function to check the password. Needs as arg the value of the input and te object 'password'
+  //Function to check the password. Needs as args the value of the input and the object 'password'
     const checkPassword = (value, object) => {
         const spaces = new RegExp("\\s", "g");
         const lowerCase = new RegExp("[a-z]", "g");
